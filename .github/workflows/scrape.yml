@@ -3,22 +3,33 @@ on:
   schedule:
     - cron: '0 3 * * *'
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@3a9c3f75e6cc5a7a323ff0fa27dee8ff2ad659b1
+      
+      - uses: actions/setup-python@82c7e631bb3c3ad8e1784d0ebf20a0a63ad9dcd0
         with:
           python-version: '3.9'
-      - run: |
-          cd scraper
-          pip install -r requirements.txt
+          cache: 'pip'
+          cache-dependency-path: 'scraper/requirements.txt'
+      
+      - run: pip install -r requirements.txt
+        working-directory: scraper
+      
       - run: python scraper/scraper.py
-      - name: Commit
+      
+      - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add videos.json
-          git commit -m "Auto-update [skip ci]" || exit 0
-          git push
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git add videos.json
+            git commit -m "Auto-update [skip ci]"
+            git push
+          fi
