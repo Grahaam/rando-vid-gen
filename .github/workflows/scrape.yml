@@ -1,0 +1,24 @@
+name: Daily Video Scrape
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - run: |
+          cd scraper
+          pip install -r requirements.txt
+      - run: python scraper/scraper.py
+      - name: Commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add videos.json
+          git commit -m "Auto-update [skip ci]" || exit 0
+          git push
