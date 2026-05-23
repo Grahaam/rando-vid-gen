@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Dice5, Instagram, Youtube, Twitter, Music2 } from 'lucide-react';
 
-const JSON_URL = "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/videos.json";
+const JSON_URL = "https://raw.githubusercontent.com/Grahaam/rando-vid-gen/main/videos.json";
 
 export default function App() {
   const [videos, setVideos] = useState([]);
