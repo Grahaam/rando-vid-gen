@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/wp-env.json",
+	"core": "WordPress/WordPress#6.8",
+	"phpVersion": "8.2",
+	"themes": [
+		"https://downloads.wordpress.org/theme/twentytwentyfive.zip",
+		"./themes/lumiere"
+	],
+	"plugins": [
+		"https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip",
+		"https://downloads.wordpress.org/plugin/woocommerce-gateway-stripe.latest-stable.zip",
+		"https://downloads.wordpress.org/plugin/woocommerce-paypal-payments.latest-stable.zip",
+		"https://downloads.wordpress.org/plugin/contact-form-7.latest-stable.zip",
+		"https://downloads.wordpress.org/plugin/the-seo-framework.latest-stable.zip",
+		"https://downloads.wordpress.org/plugin/updraftplus.latest-stable.zip",
+		"https://downloads.wordpress.org/plugin/wp-super-cache.latest-stable.zip",
+		"./plugins/photo-shop-core"
+	],
+	"config": {
+		"WP_DEBUG": true,
+		"WP_MEMORY_LIMIT": "256M"
+	}
+}

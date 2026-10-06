@@ -1,0 +1,17 @@
+{
+	"name": "photo-shop",
+	"version": "1.0.0",
+	"private": true,
+	"description": "WordPress + WooCommerce photography shop (block theme + custom plugin).",
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"start": "wp-env start",
+		"stop": "wp-env stop",
+		"setup": "bash bin/setup.sh",
+		"destroy": "wp-env destroy",
+		"lint:php": "composer run lint"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^10.0.0"
+	}
+}
