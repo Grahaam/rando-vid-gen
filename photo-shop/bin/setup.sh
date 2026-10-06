@@ -4,6 +4,10 @@
 # On a real server, point it at your own WP-CLI: WP_CLI="wp --path=/var/www/html" bin/setup.sh
 set -euo pipefail
 
+# Git Bash on Windows rewrites arguments that start with "/" into Windows
+# paths (e.g. '/%postname%/' becomes 'C:/Program Files/Git/%postname%/').
+export MSYS_NO_PATHCONV=1
+
 WP_CLI="${WP_CLI:-npx wp-env run cli wp}"
 wp() { $WP_CLI "$@"; }
 
