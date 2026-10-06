@@ -12,6 +12,6 @@
 		"lint:php": "composer run lint"
 	},
 	"devDependencies": {
-		"@wordpress/env": "^10.0.0"
+		"@wordpress/env": "^11.16.0"
 	}
 }
