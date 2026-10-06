@@ -28,6 +28,11 @@ npm run setup    # activates the theme, configures WooCommerce, creates categori
 
 `npm run stop` stops it, `npm run destroy` deletes everything.
 
+**On Windows, work from WSL.** Clone the repo inside your WSL distro (e.g. `~/rando-vid-gen` in Ubuntu),
+install Node there, and enable Docker Desktop → Settings → Resources → WSL integration for that distro.
+Docker reads files on `C:\` or `D:\` through a slow bridge: from a Windows folder the first start and
+setup take about 30 minutes, from WSL about 5.
+
 ## What the setup creates
 
 - Site in French (WordPress + WooCommerce translations, French price format)
