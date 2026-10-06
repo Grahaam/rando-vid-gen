@@ -30,6 +30,10 @@ wp option update woocommerce_downloads_require_login 'yes'
 wp option update woocommerce_downloads_grant_access_after_payment 'yes'
 # "force" works everywhere; switch to "xsendfile" on a production server that supports it.
 wp option update woocommerce_file_download_method 'force'
+# New stores start in "coming soon" mode, which hides the shop from visitors.
+wp option update woocommerce_coming_soon 'no'
+wp option update woocommerce_enable_reviews 'no'
+wp option update woocommerce_permalinks '{"product_base":"tirage","category_base":"categorie-produit","tag_base":"etiquette-produit","attribute_base":"","use_verbose_page_rules":false}' --format=json
 wp option update woocommerce_onboarding_profile '{"skipped":true}' --format=json
 
 echo "==> Product categories"
@@ -72,6 +76,19 @@ wp option update show_on_front 'page'
 wp option update page_on_front "$home_id"
 
 form_id=$(wp post list --post_type=wpcf7_contact_form --field=ID --posts_per_page=1 | tr -d '\r')
+wp post meta update "$form_id" _form "$(cat <<'FORM'
+<label>Ton nom [text* your-name autocomplete:name]</label>
+
+<label>Ton e-mail [email* your-email autocomplete:email]</label>
+
+<label>Sujet [select* your-subject "Tirage sur mesure" "Reportage ou mariage" "Accueillir l’expo" "Retrait ou floutage d’une photo" "Autre"]</label>
+
+<label>Ton message [textarea* your-message]</label>
+
+[submit "Envoyer"]
+FORM
+)"
+wp post update "$form_id" --post_title='Contact'
 wp post create --post_type=page --post_title='Contact' --post_name='contact' --post_status=publish \
 	--page_template='page-contact' \
 	--post_content="<!-- wp:paragraph --><p>Tirage sur mesure, reportage, mariage, accueil de l’expo… ou demande de retrait d’une photo où tu apparais : écris-moi, je réponds vite.</p><!-- /wp:paragraph --><!-- wp:shortcode -->[contact-form-7 id=\"$form_id\"]<!-- /wp:shortcode -->"
@@ -82,10 +99,12 @@ terms_id=$(wp post create --post_type=page --post_title='Conditions générales 
 wp option update woocommerce_terms_page_id "$terms_id"
 
 # French slugs to match the theme's links, and remove the default sample page.
-wp post update "$(wp option get woocommerce_shop_page_id | tr -d '\r')" --post_name=boutique
+wp post update "$(wp option get woocommerce_shop_page_id | tr -d '\r')" --post_name=boutique --post_title='Boutique'
 wp post update "$(wp option get woocommerce_myaccount_page_id | tr -d '\r')" --post_name=mon-compte --post_title='Mon compte'
 wp post update "$(wp option get woocommerce_cart_page_id | tr -d '\r')" --post_name=panier --post_title='Panier'
 wp post update "$(wp option get woocommerce_checkout_page_id | tr -d '\r')" --post_name=commande --post_title='Commande'
 wp post delete "$(wp post list --post_type=page --name=sample-page --field=ID | tr -d '\r')" --force || true
+
+wp rewrite flush
 
 echo "==> Done: http://localhost:8888 (admin / password)"

@@ -52,6 +52,8 @@ npm run setup    # activates the theme, configures WooCommerce, creates categori
 
 ## Before going live
 
+0. **Photos:** set a product image on every product and a photo on the homepage hero (Appearance → Editor → Homepage → cover block).
+   Setup turns WooCommerce's *Coming soon* mode off so you can see the shop; turn it back on in WooCommerce → Settings → Site visibility if you want to hide the shop until launch.
 1. **Hosting** with PHP 8.1+, HTTPS (Let's Encrypt) and Imagick. Copy `themes/tales-of-rave` and
    `plugins/photo-shop-core` to `wp-content/`, install the plugins listed above from the admin.
 2. **Payments:** connect Stripe and PayPal in WooCommerce → Settings → Payments. Test in sandbox mode first.

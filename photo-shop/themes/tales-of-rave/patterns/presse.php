@@ -10,8 +10,8 @@
 
 ?>
 <!-- wp:group {"align":"wide","layout":{"type":"default"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}}} -->
-<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading"><?php esc_html_e( 'Vu dans', 'tales-of-rave' ); ?></h3>
+<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading {"level":3,"textColor":"accent-3","fontSize":"small"} -->
+<h3 class="wp-block-heading has-accent-3-color has-text-color has-small-font-size"><?php esc_html_e( 'Vu dans', 'tales-of-rave' ); ?></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
