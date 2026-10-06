@@ -1,0 +1,96 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"color": {
+			"palette": [
+				{ "slug": "base", "name": "Nuit", "color": "#0B0B0B" },
+				{ "slug": "contrast", "name": "Papier", "color": "#F2EFE8" },
+				{ "slug": "accent-1", "name": "Rouge lutte", "color": "#E4202B" },
+				{ "slug": "accent-2", "name": "Béton", "color": "#1C1C1C" },
+				{ "slug": "accent-3", "name": "Gris argentique", "color": "#9A968F" },
+				{ "slug": "accent-4", "name": "Carton", "color": "#C8A97E" }
+			]
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"name": "Archivo Black",
+					"slug": "display",
+					"fontFamily": "\"Archivo Black\", Impact, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Archivo Black",
+							"fontWeight": "400",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/archivo-black.woff2" ]
+						}
+					]
+				},
+				{
+					"name": "Archivo",
+					"slug": "body",
+					"fontFamily": "Archivo, system-ui, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Archivo",
+							"fontWeight": "100 900",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/archivo-variable.woff2" ]
+						}
+					]
+				}
+			]
+		},
+		"layout": { "contentSize": "760px", "wideSize": "1400px" },
+		"blocks": {
+			"core/image": { "lightbox": { "enabled": true, "allowEditing": true } }
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var:preset|color|base",
+			"text": "var:preset|color|contrast"
+		},
+		"typography": {
+			"fontFamily": "var:preset|font-family|body",
+			"lineHeight": "1.6"
+		},
+		"elements": {
+			"link": {
+				"color": { "text": "var:preset|color|contrast" },
+				":hover": { "color": { "text": "var:preset|color|accent-1" } }
+			},
+			"button": {
+				"color": {
+					"background": "var:preset|color|accent-1",
+					"text": "var:preset|color|contrast"
+				},
+				"border": { "radius": "0" },
+				"typography": {
+					"fontFamily": "var:preset|font-family|display",
+					"textTransform": "uppercase",
+					"letterSpacing": "0.04em"
+				},
+				":hover": {
+					"color": {
+						"background": "var:preset|color|contrast",
+						"text": "var:preset|color|base"
+					}
+				}
+			},
+			"heading": {
+				"typography": {
+					"fontFamily": "var:preset|font-family|display",
+					"fontWeight": "400",
+					"textTransform": "uppercase",
+					"letterSpacing": "-0.01em",
+					"lineHeight": "1.05"
+				}
+			}
+		}
+	}
+}

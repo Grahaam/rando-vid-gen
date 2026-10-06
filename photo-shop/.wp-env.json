@@ -4,7 +4,7 @@
 	"phpVersion": "8.2",
 	"themes": [
 		"https://downloads.wordpress.org/theme/twentytwentyfive.zip",
-		"./themes/lumiere"
+		"./themes/tales-of-rave"
 	],
 	"plugins": [
 		"https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip",

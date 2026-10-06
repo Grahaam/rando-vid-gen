@@ -1,0 +1,70 @@
+/* Scroll-snap carousel: no JavaScript, keyboard and touch friendly. */
+.is-style-carousel {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	gap: var(--wp--preset--spacing--40, 1.5rem);
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	padding-block-end: 1rem;
+}
+
+.is-style-carousel > * {
+	flex: 0 0 min(80%, 26rem) !important;
+	width: auto !important;
+	margin: 0 !important;
+	scroll-snap-align: start;
+}
+
+.is-style-carousel img {
+	width: 100%;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.is-style-carousel {
+		scroll-behavior: smooth;
+	}
+}
+
+/* Documentary black and white: colour comes back on hover/focus. */
+.is-style-noir-et-blanc img,
+.is-style-carousel img {
+	filter: grayscale(1) contrast(1.1);
+	transition: filter 0.3s ease;
+}
+
+.is-style-noir-et-blanc:hover img,
+.is-style-carousel > *:hover img,
+.is-style-carousel > *:focus-within img {
+	filter: none;
+}
+
+/* Hand-written cardboard protest sign look, used for small labels. */
+.is-style-pancarte {
+	display: inline-block;
+	padding: 0.35em 0.8em;
+	background: var(--wp--preset--color--accent-4);
+	color: var(--wp--preset--color--base) !important;
+	font-family: var(--wp--preset--font-family--display);
+	text-transform: uppercase;
+	transform: rotate(-2deg);
+	box-shadow: 3px 3px 0 var(--wp--preset--color--base);
+}
+
+/* Red underline accent for section titles. */
+.is-style-souligne {
+	display: inline-block;
+	border-bottom: 0.15em solid var(--wp--preset--color--accent-1);
+	padding-bottom: 0.1em;
+}
+
+.wc-block-components-product-image img,
+.wp-block-gallery img {
+	-webkit-user-drag: none;
+}
+
+/* Keep full-width cover text off the screen edges. */
+.wp-block-cover.alignfull {
+	padding-inline: var(--wp--style--root--padding-left, 1.5rem);
+}

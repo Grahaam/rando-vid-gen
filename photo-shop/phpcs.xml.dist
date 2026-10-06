@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ruleset name="Photo Shop">
 	<description>WordPress Coding Standards for the custom theme and plugin.</description>
-	<file>themes/lumiere</file>
+	<file>themes/tales-of-rave</file>
 	<file>plugins/photo-shop-core</file>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<arg name="extensions" value="php"/>
@@ -12,7 +12,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="lumiere"/>
+				<element value="tales-of-rave"/>
 				<element value="photo-shop-core"/>
 			</property>
 		</properties>
