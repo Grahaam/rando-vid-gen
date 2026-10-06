@@ -18,7 +18,7 @@ Black-and-white documentary look, French content, built built from existing, ope
 
 ## Run it locally
 
-Requirements: Docker, Node.js 18+.
+Requirements: Docker, Node.js 24 LTS or newer.
 
 ```bash
 npm install
@@ -27,6 +27,11 @@ npm run setup    # activates the theme, configures WooCommerce, creates categori
 ```
 
 `npm run stop` stops it, `npm run destroy` deletes everything.
+
+**On Windows, work from WSL.** Clone the repo inside your WSL distro (e.g. `~/rando-vid-gen` in Ubuntu),
+install Node there, and enable Docker Desktop → Settings → Resources → WSL integration for that distro.
+Docker reads files on `C:\` or `D:\` through a slow bridge: from a Windows folder the first start and
+setup take about 30 minutes, from WSL about 5.
 
 ## What the setup creates
 
@@ -54,7 +59,7 @@ npm run setup    # activates the theme, configures WooCommerce, creates categori
 
 0. **Photos:** set a product image on every product and a photo on the homepage hero (Appearance → Editor → Homepage → cover block).
    Setup turns WooCommerce's *Coming soon* mode off so you can see the shop; turn it back on in WooCommerce → Settings → Site visibility if you want to hide the shop until launch.
-1. **Hosting** with PHP 8.1+, HTTPS (Let's Encrypt) and Imagick. Copy `themes/tales-of-rave` and
+1. **Hosting** with PHP 8.3+ (Contact Form 7 requires it), HTTPS (Let's Encrypt) and Imagick. Copy `themes/tales-of-rave` and
    `plugins/photo-shop-core` to `wp-content/`, install the plugins listed above from the admin.
 2. **Payments:** connect Stripe and PayPal in WooCommerce → Settings → Payments. Test in sandbox mode first.
 3. **Downloads:** WooCommerce → Settings → Products → Downloads → set the method to *X-Accel-Redirect/X-Sendfile*

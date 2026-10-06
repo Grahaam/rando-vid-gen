@@ -1,19 +1,20 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/wp-env.json",
 	"core": null,
-	"phpVersion": "8.2",
+	"phpVersion": "8.4",
+	"testsEnvironment": false,
 	"themes": [
 		"https://downloads.wordpress.org/theme/twentytwentyfive.zip",
 		"./themes/tales-of-rave"
 	],
 	"plugins": [
-		"https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip",
-		"https://downloads.wordpress.org/plugin/woocommerce-gateway-stripe.latest-stable.zip",
-		"https://downloads.wordpress.org/plugin/woocommerce-paypal-payments.latest-stable.zip",
-		"https://downloads.wordpress.org/plugin/contact-form-7.latest-stable.zip",
-		"https://downloads.wordpress.org/plugin/autodescription.latest-stable.zip",
-		"https://downloads.wordpress.org/plugin/updraftplus.latest-stable.zip",
-		"https://downloads.wordpress.org/plugin/wp-super-cache.latest-stable.zip",
+		"https://downloads.wordpress.org/plugin/woocommerce.zip",
+		"https://downloads.wordpress.org/plugin/woocommerce-gateway-stripe.zip",
+		"https://downloads.wordpress.org/plugin/woocommerce-paypal-payments.zip",
+		"https://downloads.wordpress.org/plugin/contact-form-7.zip",
+		"https://downloads.wordpress.org/plugin/autodescription.zip",
+		"https://downloads.wordpress.org/plugin/updraftplus.zip",
+		"https://downloads.wordpress.org/plugin/wp-super-cache.zip",
 		"./plugins/photo-shop-core"
 	],
 	"config": {
