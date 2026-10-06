@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # Configure a fresh wp-env site as a photography shop.
 # Usage: npm run start && npm run setup
+# On a real server, point it at your own WP-CLI: WP_CLI="wp --path=/var/www/html" bin/setup.sh
 set -euo pipefail
 
-wp() { npx wp-env run cli wp "$@"; }
+WP_CLI="${WP_CLI:-npx wp-env run cli wp}"
+wp() { $WP_CLI "$@"; }
 
 echo "==> Theme, permalinks, language"
 wp theme activate lumiere
@@ -49,7 +51,7 @@ wp wc product create --user=admin --name="Mountain Light — Canvas" \
 	--categories="[{\"id\":$(cat_id 'Canvas prints')}]" \
 	--short_description="Gallery-wrapped canvas, ready to hang."
 wp wc product create --user=admin --name="Custom Order" \
-	--type=simple --regular_price=0 --virtual=true --catalog_visibility=visible \
+	--type=simple --regular_price=0 --virtual=true --catalog_visibility=hidden \
 	--categories="[{\"id\":$(cat_id 'Custom orders')}]" \
 	--short_description="Use the contact form to request a custom size or commission."
 
@@ -65,8 +67,7 @@ wp post create --post_type=page --post_title='Contact' --post_name='contact' --p
 
 # French law requires these for an online shop; fill them in before going live.
 wp post create --post_type=page --post_title='Mentions légales' --post_status=draft
-wp post create --post_type=page --post_title='Conditions générales de vente' --post_status=draft
-terms_id=$(wp post list --post_type=page --name='conditions-generales-de-vente' --post_status=draft --field=ID | tr -d '\r')
+terms_id=$(wp post create --post_type=page --post_title='Conditions générales de vente' --post_name='cgv' --post_status=draft --porcelain | tr -d '\r')
 wp option update woocommerce_terms_page_id "$terms_id"
 
 echo "==> Done: http://localhost:8888 (admin / password)"
