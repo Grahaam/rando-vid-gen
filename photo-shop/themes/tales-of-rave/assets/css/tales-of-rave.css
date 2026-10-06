@@ -286,3 +286,9 @@ select.orderby,
 .wc-block-components-product-button .wp-block-button__link {
 	margin-inline: 0 !important;
 }
+
+@media (max-width: 781px) {
+	.tor-cat {
+		min-height: 8rem;
+	}
+}
