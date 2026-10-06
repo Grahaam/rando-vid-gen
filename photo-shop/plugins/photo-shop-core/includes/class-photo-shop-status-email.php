@@ -20,6 +20,20 @@ class Photo_Shop_Status_Email extends WC_Email {
 	protected $intro;
 
 	/**
+	 * Default subject.
+	 *
+	 * @var string
+	 */
+	protected $default_subject;
+
+	/**
+	 * Default heading.
+	 *
+	 * @var string
+	 */
+	protected $default_heading;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param string $status  Status slug without "wc-".

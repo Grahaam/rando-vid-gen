@@ -1,0 +1,288 @@
+/* Scroll-snap carousel: no JavaScript, keyboard and touch friendly. */
+.is-style-carousel {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	gap: var(--wp--preset--spacing--40, 1.5rem);
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	padding-block-end: 1rem;
+}
+
+.is-style-carousel > * {
+	flex: 0 0 min(80%, 26rem) !important;
+	width: auto !important;
+	margin: 0 !important;
+	scroll-snap-align: start;
+}
+
+.is-style-carousel img {
+	width: 100%;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.is-style-carousel {
+		scroll-behavior: smooth;
+	}
+}
+
+/* Documentary black and white: colour comes back on hover/focus. */
+.is-style-noir-et-blanc img,
+.is-style-carousel img {
+	filter: grayscale(1) contrast(1.1);
+	transition: filter 0.3s ease;
+}
+
+.is-style-noir-et-blanc:hover img,
+.is-style-carousel > *:hover img,
+.is-style-carousel > *:focus-within img {
+	filter: none;
+}
+
+/* Hand-written cardboard protest sign look, used for small labels. */
+.is-style-pancarte {
+	display: inline-block;
+	padding: 0.35em 0.8em;
+	background: var(--wp--preset--color--accent-4);
+	color: var(--wp--preset--color--base) !important;
+	font-family: var(--wp--preset--font-family--display);
+	text-transform: uppercase;
+	transform: rotate(-2deg);
+	box-shadow: 3px 3px 0 var(--wp--preset--color--base);
+}
+
+/* Red underline accent for section titles. */
+.is-style-souligne {
+	display: inline-block;
+	border-bottom: 0.15em solid var(--wp--preset--color--accent-1);
+	padding-bottom: 0.1em;
+}
+
+.wc-block-components-product-image img,
+.wp-block-gallery img {
+	-webkit-user-drag: none;
+}
+
+/* Keep full-width cover text off the screen edges. */
+.wp-block-cover.alignfull {
+	padding-inline: var(--wp--style--root--padding-left, 1.5rem);
+}
+
+/* ---------- Hero: film grain while no photo is set ---------- */
+.wp-block-cover.alignfull:not(:has(img, video)) {
+	background:
+		radial-gradient(ellipse at 70% 30%, rgb(228 32 43 / 0.18), transparent 60%),
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E"),
+		var(--wp--preset--color--base);
+}
+
+/* ---------- Product images & placeholders ---------- */
+.wc-block-components-product-image img[src*="woocommerce-placeholder"],
+.woocommerce img[src*="woocommerce-placeholder"],
+.wp-block-woocommerce-product-image-gallery img[src*="woocommerce-placeholder"] {
+	filter: invert(0.92) !important;
+	opacity: 0.35;
+}
+
+/* ---------- Product grids: quiet, gallery-like ---------- */
+.wc-block-product-template .wc-block-components-product-image,
+ul.products li.product a img {
+	margin-bottom: 0.75rem !important;
+	overflow: hidden;
+}
+
+.wc-block-product-template img,
+ul.products li.product img {
+	transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.wc-block-product-template li:hover img,
+ul.products li.product:hover img {
+	transform: scale(1.03);
+}
+
+.wc-block-product-template .wp-block-post-title,
+.wc-block-product-template .wc-block-components-product-price,
+.wc-block-product-template .wc-block-components-product-button {
+	text-align: start !important;
+	justify-content: flex-start !important;
+}
+
+.wc-block-product-template .wp-block-post-title {
+	font-size: 0.95rem !important;
+	letter-spacing: 0.02em;
+}
+
+.wc-block-product-template .wp-block-post-title a {
+	text-decoration: none;
+}
+
+.wc-block-components-product-price {
+	color: var(--wp--preset--color--accent-3);
+}
+
+.wc-block-product-template .wp-block-button__link,
+.wc-block-product-template .wc-block-components-product-button__button {
+	background: transparent !important;
+	color: var(--wp--preset--color--contrast) !important;
+	border: 1px solid currentcolor !important;
+	padding: 0.6em 1.1em !important;
+	font-size: 0.75rem !important;
+}
+
+.wc-block-product-template .wp-block-button__link:hover,
+.wc-block-product-template .wc-block-components-product-button__button:hover {
+	background: var(--wp--preset--color--accent-1) !important;
+	border-color: var(--wp--preset--color--accent-1) !important;
+}
+
+/* ---------- Forms (WooCommerce, Contact Form 7, comments) ---------- */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+input[type="url"],
+select,
+textarea {
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	padding: 0.8em 1em;
+	background: var(--wp--preset--color--accent-2);
+	color: var(--wp--preset--color--contrast);
+	border: 1px solid #3a3a3a;
+	border-radius: 0;
+	font: inherit;
+}
+
+input[type="number"].qty {
+	width: 4.5em;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 2px solid var(--wp--preset--color--accent-1);
+	outline-offset: 1px;
+	border-color: transparent;
+}
+
+select.orderby {
+	width: auto;
+}
+
+.wpcf7 form {
+	max-width: 640px;
+}
+
+.wpcf7 label {
+	display: block;
+	font-weight: 700;
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.wpcf7 input[type="submit"],
+.woocommerce button.button,
+.woocommerce a.button {
+	padding: 1em 2em;
+	background: var(--wp--preset--color--accent-1);
+	color: var(--wp--preset--color--contrast);
+	border: 0;
+	border-radius: 0;
+	font-family: var(--wp--preset--font-family--display);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	cursor: pointer;
+}
+
+.wpcf7 input[type="submit"]:hover,
+.woocommerce button.button:hover,
+.woocommerce a.button:hover {
+	background: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+}
+
+/* ---------- Footer ---------- */
+footer .wp-block-list {
+	padding-left: 0;
+	list-style: none;
+}
+
+footer .wp-block-list li {
+	margin-bottom: 0.4em;
+}
+
+footer a {
+	text-decoration: none;
+}
+
+footer a:hover {
+	text-decoration: underline;
+	text-decoration-color: var(--wp--preset--color--accent-1);
+}
+
+/* ---------- Category cards ---------- */
+.tor-cat {
+	position: relative;
+	min-height: 14rem;
+	border: 1px solid #333;
+	transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.tor-cat:hover {
+	border-color: var(--wp--preset--color--accent-1);
+	background: var(--wp--preset--color--accent-2);
+}
+
+.tor-cat a {
+	text-decoration: none;
+}
+
+/* Whole card is clickable. */
+.tor-cat a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}
+
+.woocommerce-breadcrumb,
+.wc-block-breadcrumbs {
+	font-size: 0.8rem;
+	color: var(--wp--preset--color--accent-3);
+}
+
+/* Inline-block labels ignore auto margins: align them with the constrained column. */
+.is-layout-constrained > .is-style-pancarte {
+	display: block;
+	width: fit-content;
+	margin-inline-start: max(0px, calc((100% - var(--wp--style--global--content-size)) / 2)) !important;
+	margin-inline-end: auto !important;
+}
+
+/* Shop toolbar: result count and sorting on one tidy line. */
+.woocommerce-result-count,
+.wc-block-product-results-count {
+	font-size: 0.85rem;
+	color: var(--wp--preset--color--accent-3);
+}
+
+select.orderby,
+.wc-block-catalog-sorting select {
+	width: auto;
+	max-width: 100%;
+	padding-block: 0.5em;
+	font-size: 0.85rem;
+}
+
+.wc-block-components-product-button {
+	align-items: flex-start !important;
+}
+
+.wc-block-components-product-button .wp-block-button__link {
+	margin-inline: 0 !important;
+}
